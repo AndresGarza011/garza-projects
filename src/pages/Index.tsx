@@ -1,6 +1,8 @@
 import { useEffect, type PointerEvent } from "react";
 import { ArrowUpRight, Code2, Cpu, Download, Gamepad2, Image, Zap } from "lucide-react";
 import raspberryPiPhoto from "@/assets/projects/raspberry-pi.jpg";
+import turtleAnimationPhoto from "@/assets/projects/turtle-animation.png";
+import ufcGamePhoto from "@/assets/projects/ufc-game.png";
 
 const projects = [
   {
@@ -21,6 +23,8 @@ const projects = [
     eyebrow: "Section 2",
     description:
       "For this project, I used Python turtle graphics to draw letters, words, and custom shapes through code. It was challenging because I had to think carefully about movement, angles, spacing, and functions, but I found it really cool to see the turtle create something visual from the instructions I programmed.",
+    image: turtleAnimationPhoto,
+    alt: "Python turtle animation project screenshot",
     icon: Code2,
     action: { label: "Download Python file", href: "/andres.py" },
     meta: "Python • Turtle • Drawing",
@@ -32,6 +36,8 @@ const projects = [
     eyebrow: "Section 3",
     description:
       "I really enjoyed creating this game because it pushed my creativity and problem-solving skills at the same time. I had to think about how the game should look, how it should feel to play, and how the code should control the action, which made the process challenging, fun, and rewarding.",
+    image: ufcGamePhoto,
+    alt: "Ultimate UFC and BJJ Showdown game screenshot",
     icon: Gamepad2,
     action: { label: "Download game file", href: "/my_ufc_game.py" },
     meta: "Python • Pygame • Game Design",
@@ -120,7 +126,7 @@ const Index = () => {
           <div className="hidden items-center gap-8 text-sm text-hero-foreground/72 md:flex">
             <a className="transition-colors hover:text-hero-foreground" href="#projects">Projects</a>
             <a className="transition-colors hover:text-hero-foreground" href="#skills">Skills</a>
-            <a className="transition-colors hover:text-hero-foreground" href="#story">Story</a>
+            <a className="transition-colors hover:text-hero-foreground" href="#about">About</a>
           </div>
           <a href="#projects" className="rounded-full bg-hero-foreground px-4 py-2 text-sm font-semibold text-hero transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             View work
@@ -141,7 +147,7 @@ const Index = () => {
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <a href="#projects" className="premium-button bg-hero-foreground text-hero hover:-translate-y-0.5 hover:shadow-glow">Explore projects</a>
-              <a href="#story" className="premium-button border border-hero-foreground/20 bg-hero-foreground/8 text-hero-foreground backdrop-blur-xl hover:-translate-y-0.5 hover:bg-hero-foreground/12">Read story</a>
+              <a href="#about" className="premium-button border border-hero-foreground/20 bg-hero-foreground/8 text-hero-foreground backdrop-blur-xl hover:-translate-y-0.5 hover:bg-hero-foreground/12">About me</a>
             </div>
           </div>
 
@@ -250,13 +256,18 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="story" className="scroll-reveal px-5 py-24 sm:px-8 lg:py-32" data-scroll-reveal>
-        <div className="mx-auto max-w-5xl text-center">
-          <p className="section-kicker">Portfolio story</p>
-          <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-6xl">A showcase of projects that challenged my ideas.</h2>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
-            These projects helped me practice coding, building, designing, and solving problems in different ways. I wanted this website to make each project easy to see and understand.
-          </p>
+      <section id="about" className="scroll-reveal px-5 py-24 sm:px-8 lg:py-32" data-scroll-reveal>
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+          <div>
+            <p className="section-kicker">About me</p>
+            <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-6xl">Andres Garza</h2>
+            <p className="mt-5 text-lg font-semibold text-muted-foreground">9th grade student</p>
+          </div>
+          <div className="glass-panel rounded-3xl p-7 sm:p-10">
+            <p className="text-xl leading-9 text-foreground/82 sm:text-2xl sm:leading-10">
+              Through these projects, I learned that creativity and determination can help us build impressive things. Whether I was coding, designing, or working with hardware, each project showed me that we are capable of accomplishing meaningful goals when we commit to them, stay focused, and approach challenges with the right mindset.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -267,6 +278,7 @@ const Index = () => {
             <a className="hover:text-foreground" href="#top">Back to top</a>
             <a className="hover:text-foreground" href="#projects">Projects</a>
             <a className="hover:text-foreground" href="#skills">Skills</a>
+            <a className="hover:text-foreground" href="#about">About</a>
             <span>© 2026 Garza Projects</span>
           </div>
         </div>
