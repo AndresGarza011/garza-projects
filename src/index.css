@@ -105,22 +105,12 @@
   .premium-button-primary { @apply inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background; }
   .premium-button-secondary { @apply inline-flex items-center justify-center rounded-full border border-border/80 bg-card/70 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background; }
   .section-kicker { @apply text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground; }
-  .scroll-reveal { animation: scroll-reveal cubic-bezier(0.16, 1, 0.3, 1) both; animation-timeline: view(); animation-range: entry 0% cover 38%; transform-origin: center top; }
-  .cinematic-card { transform-style: preserve-3d; animation: cinematic-card linear both; animation-timeline: view(); animation-range: entry 4% cover 42%; }
-}
-
-@keyframes scroll-reveal {
-  0% { opacity: 0; transform: translateY(72px) scale(0.965); filter: blur(16px); }
-  55% { opacity: 1; filter: blur(0); }
-  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-}
-
-@keyframes cinematic-card {
-  0% { opacity: 0; transform: perspective(1200px) translateY(80px) rotateX(10deg) scale(0.96); filter: blur(18px); }
-  58% { opacity: 1; filter: blur(0); }
-  100% { opacity: 1; transform: perspective(1200px) translateY(0) rotateX(0) scale(1); filter: blur(0); }
+  .scroll-reveal { opacity: 0; transform: translateY(64px) scale(0.975); filter: blur(16px); transition: opacity 950ms cubic-bezier(0.16, 1, 0.3, 1), transform 950ms cubic-bezier(0.16, 1, 0.3, 1), filter 950ms cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--reveal-delay, 0ms); }
+  .scroll-reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  .cinematic-card { opacity: 0; transform: perspective(1200px) translateY(78px) rotateX(8deg) scale(0.96); transform-style: preserve-3d; filter: blur(18px); transition: opacity 1050ms cubic-bezier(0.16, 1, 0.3, 1), transform 1050ms cubic-bezier(0.16, 1, 0.3, 1), filter 1050ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 500ms ease, translate 500ms ease; transition-delay: var(--reveal-delay, 0ms); }
+  .cinematic-card.is-visible { opacity: 1; transform: perspective(1200px) translateY(0) rotateX(0) scale(1); filter: blur(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scroll-reveal, .cinematic-card { animation: none; }
+  .scroll-reveal, .cinematic-card { opacity: 1; transform: none; filter: none; transition: none; }
 }
