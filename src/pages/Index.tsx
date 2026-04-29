@@ -7,7 +7,7 @@ const projects = [
     name: "Raspberry Pi",
     eyebrow: "Section 1",
     description:
-      "I did this Raspberry Pi and I added some creative features on it and I really enjoyed this project because we needed to use our creativity.",
+      "For this project, I worked with a Raspberry Pi and added my own creative features to make the build feel more personal and interesting. I really enjoyed this project because it challenged me to think beyond basic instructions, use my creativity, and make design choices that helped the project stand out.",
     image: raspberryPiPhoto,
     alt: "Raspberry Pi project photo",
     icon: Cpu,
@@ -19,7 +19,7 @@ const projects = [
     name: "Turtle Projects",
     eyebrow: "Section 2",
     description:
-      "For this project I had to program in Python to make the turtle draw letters and words and even add a cool function and even thought this project was really challenging I find it really cool.",
+      "For this project, I used Python turtle graphics to draw letters, words, and custom shapes through code. It was challenging because I had to think carefully about movement, angles, spacing, and functions, but I found it really cool to see the turtle create something visual from the instructions I programmed.",
     icon: Code2,
     action: { label: "Download Python file", href: "/andres.py" },
     meta: "Python • Turtle • Drawing",
@@ -30,7 +30,7 @@ const projects = [
     name: "Py Game",
     eyebrow: "Section 3",
     description:
-      "I really enjoyed this project because I thought it was challenging our creativity and it was also fun to create the game and I enjoyed it a lot.",
+      "I really enjoyed creating this game because it pushed my creativity and problem-solving skills at the same time. I had to think about how the game should look, how it should feel to play, and how the code should control the action, which made the process challenging, fun, and rewarding.",
     icon: Gamepad2,
     action: { label: "Download game file", href: "/my_ufc_game.py" },
     meta: "Python • Pygame • Game Design",
@@ -41,7 +41,7 @@ const projects = [
     name: "Servo Motor",
     eyebrow: "Section 4",
     description:
-      "I really enjoyed making my own 3D design to make a function with the servo motor because I think this also challenged us in technical skills and creativity and we needed to know how to use Fusion.",
+      "For this project, I made my own 3D design and connected it with a servo motor to create a working motion-based function. I enjoyed it because it challenged both my technical skills and creativity, and it also helped me practice using Fusion to design something that could connect to a real mechanical part.",
     icon: Zap,
     action: null,
     meta: "Fusion • 3D Design • Servo Motion",
@@ -63,7 +63,7 @@ const Index = () => {
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-hero-foreground/10 bg-hero/45 backdrop-blur-2xl">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-5 sm:px-8">
           <a href="#top" className="font-display text-lg font-semibold tracking-tight text-hero-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-            Nova Projects
+            Garza Projects
           </a>
           <div className="hidden items-center gap-8 text-sm text-hero-foreground/72 md:flex">
             <a className="transition-colors hover:text-hero-foreground" href="#projects">Projects</a>
@@ -82,7 +82,7 @@ const Index = () => {
           <div className="animate-fade-up">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.32em] text-hero-foreground/60">Student project showcase</p>
             <h1 className="max-w-4xl font-display text-6xl font-semibold leading-[0.9] tracking-tight sm:text-7xl lg:text-8xl">
-              Nova Projects, built with creativity.
+              Garza Projects, built with creativity.
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-hero-foreground/72 sm:text-xl">
               A clean portfolio for my Raspberry Pi, Python turtle, Pygame, and servo motor projects.
@@ -122,7 +122,7 @@ const Index = () => {
               const Icon = project.icon;
 
               return (
-                <article key={project.id} className="group overflow-hidden rounded-3xl border border-border bg-card/80 shadow-soft backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-glow">
+                <article key={project.id} className="scroll-reveal group overflow-hidden rounded-3xl border border-border bg-card/80 shadow-soft backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-glow">
                   <div className="relative aspect-[16/10] overflow-hidden bg-product-sheen">
                     {project.image ? (
                       <img src={project.image} alt={project.alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading={project.id === 1 ? "eager" : "lazy"} />
@@ -170,7 +170,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="skills" className="bg-foreground px-5 py-24 text-background sm:px-8 lg:py-32">
+      <section id="skills" className="scroll-reveal bg-foreground px-5 py-24 text-background sm:px-8 lg:py-32">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-background/55">What I practiced</p>
@@ -189,7 +189,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="story" className="px-5 py-24 sm:px-8 lg:py-32">
+      <section id="story" className="scroll-reveal px-5 py-24 sm:px-8 lg:py-32">
         <div className="mx-auto max-w-5xl text-center">
           <p className="section-kicker">Portfolio story</p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-6xl">A showcase of projects that challenged my ideas.</h2>
@@ -201,12 +201,12 @@ const Index = () => {
 
       <footer className="border-t border-border px-5 py-10 sm:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-display text-2xl font-semibold tracking-tight">Nova Projects</p>
+          <p className="font-display text-2xl font-semibold tracking-tight">Garza Projects</p>
           <div className="flex flex-wrap gap-5 text-sm text-muted-foreground">
             <a className="hover:text-foreground" href="#top">Back to top</a>
             <a className="hover:text-foreground" href="#projects">Projects</a>
             <a className="hover:text-foreground" href="#skills">Skills</a>
-            <span>© 2026 Nova Projects</span>
+            <span>© 2026 Garza Projects</span>
           </div>
         </div>
       </footer>
