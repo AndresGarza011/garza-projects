@@ -93,7 +93,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[560px] animate-float-slow rounded-[2rem] border border-hero-foreground/14 bg-hero-foreground/8 p-3 shadow-glow backdrop-blur-xl motion-reduce:animate-none">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[560px] animate-float-slow rounded-[2rem] border border-accent/30 bg-hero-foreground/8 p-3 shadow-glow backdrop-blur-xl motion-reduce:animate-none">
             <div className="absolute -inset-10 -z-10 rounded-full bg-accent-sweep opacity-30 blur-3xl" />
             <div className="relative h-full overflow-hidden rounded-[1.5rem] bg-product-sheen shadow-soft">
               <img src={raspberryPiPhoto} alt="Raspberry Pi project preview" className="h-full w-full object-cover" loading="eager" />
@@ -122,7 +122,7 @@ const Index = () => {
               const Icon = project.icon;
 
               return (
-                <article key={project.id} className="scroll-reveal group overflow-hidden rounded-3xl border border-border bg-card/80 shadow-soft backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-glow">
+                <article key={project.id} className="cinematic-card group overflow-hidden rounded-3xl border border-border bg-card/80 shadow-soft backdrop-blur-2xl transition-all duration-700 hover:-translate-y-2 hover:shadow-glow">
                   <div className="relative aspect-[16/10] overflow-hidden bg-product-sheen">
                     {project.image ? (
                       <img src={project.image} alt={project.alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading={project.id === 1 ? "eager" : "lazy"} />
@@ -140,7 +140,7 @@ const Index = () => {
                         </div>
                       </div>
                     )}
-                    <div className="absolute left-5 top-5 rounded-full border border-hero-foreground/15 bg-hero/55 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-hero-foreground backdrop-blur-xl">
+                    <div className="absolute left-5 top-5 rounded-full border border-accent/30 bg-hero/55 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-hero-foreground backdrop-blur-xl">
                       {project.eyebrow}
                     </div>
                   </div>
