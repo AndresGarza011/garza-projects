@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, type PointerEvent } from "react";
 import { ArrowUpRight, Code2, Cpu, Download, Gamepad2, Image, Zap } from "lucide-react";
 import raspberryPiPhoto from "@/assets/projects/raspberry-pi.jpg";
 
@@ -59,6 +59,34 @@ const skills = [
 ];
 
 const Index = () => {
+  const handleCardPointerMove = (event: PointerEvent<HTMLElement>) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const normalizedX = x / rect.width - 0.5;
+    const normalizedY = y / rect.height - 0.5;
+
+    card.style.setProperty("--pointer-x", `${(x / rect.width) * 100}%`);
+    card.style.setProperty("--pointer-y", `${(y / rect.height) * 100}%`);
+    card.style.setProperty("--magnet-x", `${normalizedX * 10}px`);
+    card.style.setProperty("--magnet-y", `${normalizedY * 10}px`);
+    card.style.setProperty("--tilt-x", `${normalizedY * -4.5}deg`);
+    card.style.setProperty("--tilt-y", `${normalizedX * 4.5}deg`);
+  };
+
+  const handleCardPointerLeave = (event: PointerEvent<HTMLElement>) => {
+    const card = event.currentTarget;
+    card.style.setProperty("--pointer-x", "50%");
+    card.style.setProperty("--pointer-y", "30%");
+    card.style.setProperty("--magnet-x", "0px");
+    card.style.setProperty("--magnet-y", "0px");
+    card.style.setProperty("--tilt-x", "0deg");
+    card.style.setProperty("--tilt-y", "0deg");
+  };
+
   useEffect(() => {
     const animatedElements = document.querySelectorAll<HTMLElement>("[data-scroll-reveal]");
 
@@ -146,8 +174,17 @@ const Index = () => {
               const Icon = project.icon;
 
               return (
-                <article key={project.id} className="cinematic-card group overflow-hidden rounded-3xl border border-border bg-card/80 shadow-soft backdrop-blur-2xl transition-all duration-700 hover:-translate-y-2 hover:shadow-glow" data-scroll-reveal>
-                  <div className="relative aspect-[16/10] overflow-hidden bg-product-sheen">
+                <article
+                  key={project.id}
+                  className="cinematic-card project-card group overflow-hidden rounded-3xl border border-border bg-card/80 shadow-soft backdrop-blur-2xl"
+                  data-scroll-reveal
+                  tabIndex={0}
+                  aria-labelledby={`project-title-${project.id}`}
+                  onPointerMove={handleCardPointerMove}
+                  onPointerLeave={handleCardPointerLeave}
+                >
+                  <div className="project-card-media relative aspect-[16/10] overflow-hidden bg-product-sheen">
+                    <div className="project-card-sheen" aria-hidden="true" />
                     {project.image ? (
                       <img src={project.image} alt={project.alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading={project.id === 1 ? "eager" : "lazy"} />
                     ) : project.code ? (
@@ -168,11 +205,11 @@ const Index = () => {
                       {project.eyebrow}
                     </div>
                   </div>
-                  <div className="p-6 sm:p-7">
+                  <div className="project-card-content p-6 sm:p-7">
                     <div className="mb-5 flex items-center justify-between gap-4">
                       <div>
                         <p className="text-sm font-semibold text-muted-foreground">{project.meta}</p>
-                        <h3 className="mt-2 font-display text-3xl font-semibold tracking-tight">{project.name}</h3>
+                        <h3 id={`project-title-${project.id}`} className="mt-2 font-display text-3xl font-semibold tracking-tight">{project.name}</h3>
                       </div>
                       <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-accent-sweep text-accent-foreground">
                         <Icon className="size-5" aria-hidden="true" />

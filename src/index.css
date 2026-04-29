@@ -107,10 +107,23 @@
   .section-kicker { @apply text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground; }
   .scroll-reveal { opacity: 0; transform: translateY(64px) scale(0.975); filter: blur(16px); transition: opacity 950ms cubic-bezier(0.16, 1, 0.3, 1), transform 950ms cubic-bezier(0.16, 1, 0.3, 1), filter 950ms cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--reveal-delay, 0ms); }
   .scroll-reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-  .cinematic-card { opacity: 0; transform: perspective(1200px) translateY(78px) rotateX(8deg) scale(0.96); transform-style: preserve-3d; filter: blur(18px); transition: opacity 1050ms cubic-bezier(0.16, 1, 0.3, 1), transform 1050ms cubic-bezier(0.16, 1, 0.3, 1), filter 1050ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 500ms ease, translate 500ms ease; transition-delay: var(--reveal-delay, 0ms); }
+  .cinematic-card { opacity: 0; transform: perspective(1200px) translateY(78px) rotateX(8deg) scale(0.96); transform-style: preserve-3d; filter: blur(18px); transition: opacity 1050ms cubic-bezier(0.16, 1, 0.3, 1), transform 1050ms cubic-bezier(0.16, 1, 0.3, 1), filter 1050ms cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--reveal-delay, 0ms); }
   .cinematic-card.is-visible { opacity: 1; transform: perspective(1200px) translateY(0) rotateX(0) scale(1); filter: blur(0); }
+  .project-card { --pointer-x: 50%; --pointer-y: 30%; --magnet-x: 0px; --magnet-y: 0px; --tilt-x: 0deg; --tilt-y: 0deg; position: relative; isolation: isolate; will-change: transform; transition: opacity 1050ms cubic-bezier(0.16, 1, 0.3, 1), transform 520ms cubic-bezier(0.16, 1, 0.3, 1), filter 1050ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 520ms ease, border-color 520ms ease; }
+  .project-card.is-visible:hover, .project-card.is-visible:focus-visible { border-color: hsl(var(--accent) / 0.46); box-shadow: var(--shadow-glow), var(--shadow-soft); transform: perspective(1200px) translate3d(var(--magnet-x), var(--magnet-y), 0) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) scale(1.012); }
+  .project-card:focus-visible { outline: none; box-shadow: 0 0 0 3px hsl(var(--background)), 0 0 0 6px hsl(var(--ring) / 0.72), var(--shadow-glow); }
+  .project-card:active { transform: perspective(1200px) translate3d(calc(var(--magnet-x) * 0.45), calc(var(--magnet-y) * 0.45), 0) rotateX(calc(var(--tilt-x) * 0.5)) rotateY(calc(var(--tilt-y) * 0.5)) scale(0.992); transition-duration: 160ms; }
+  .project-card::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), hsl(var(--accent) / 0.22), transparent 34%); opacity: 0; transition: opacity 420ms ease; }
+  .project-card:hover::before, .project-card:focus-visible::before { opacity: 1; }
+  .project-card-media img, .project-card-media pre, .project-card-content, .project-card-sheen { transform: translateZ(0); }
+  .project-card:hover .project-card-media img { transform: scale(1.055) translate3d(calc(var(--magnet-x) * -0.35), calc(var(--magnet-y) * -0.35), 0); }
+  .project-card-sheen { pointer-events: none; position: absolute; inset: -1px; z-index: 2; background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), hsl(var(--hero-foreground) / 0.34), transparent 18%), linear-gradient(115deg, transparent 18%, hsl(var(--accent) / 0.18) 42%, transparent 62%); opacity: 0; mix-blend-mode: screen; transition: opacity 420ms ease; }
+  .project-card:hover .project-card-sheen, .project-card:focus-visible .project-card-sheen { opacity: 1; }
+  .project-card-content { transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .project-card:hover .project-card-content { transform: translate3d(calc(var(--magnet-x) * 0.2), calc(var(--magnet-y) * 0.2), 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scroll-reveal, .cinematic-card { opacity: 1; transform: none; filter: none; transition: none; }
+  .scroll-reveal, .cinematic-card, .project-card, .project-card-content, .project-card-media img { opacity: 1; transform: none; filter: none; transition: none; }
+  .project-card-sheen, .project-card::before { display: none; }
 }
