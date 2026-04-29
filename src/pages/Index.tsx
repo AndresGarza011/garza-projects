@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ArrowUpRight, Code2, Cpu, Download, Gamepad2, Image, Zap } from "lucide-react";
 import raspberryPiPhoto from "@/assets/projects/raspberry-pi.jpg";
 
@@ -58,6 +59,29 @@ const skills = [
 ];
 
 const Index = () => {
+  useEffect(() => {
+    const animatedElements = document.querySelectorAll<HTMLElement>("[data-scroll-reveal]");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    animatedElements.forEach((element, index) => {
+      element.style.setProperty("--reveal-delay", `${Math.min(index * 70, 420)}ms`);
+      observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-hero-foreground/10 bg-hero/45 backdrop-blur-2xl">
@@ -109,7 +133,7 @@ const Index = () => {
 
       <section id="projects" className="px-5 py-24 sm:px-8 lg:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 max-w-3xl">
+          <div className="scroll-reveal mb-14 max-w-3xl" data-scroll-reveal>
             <p className="section-kicker">Project sections</p>
             <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-6xl">Four projects for people to view.</h2>
             <p className="mt-5 text-lg leading-8 text-muted-foreground">
@@ -122,7 +146,7 @@ const Index = () => {
               const Icon = project.icon;
 
               return (
-                <article key={project.id} className="cinematic-card group overflow-hidden rounded-3xl border border-border bg-card/80 shadow-soft backdrop-blur-2xl transition-all duration-700 hover:-translate-y-2 hover:shadow-glow">
+                <article key={project.id} className="cinematic-card group overflow-hidden rounded-3xl border border-border bg-card/80 shadow-soft backdrop-blur-2xl transition-all duration-700 hover:-translate-y-2 hover:shadow-glow" data-scroll-reveal>
                   <div className="relative aspect-[16/10] overflow-hidden bg-product-sheen">
                     {project.image ? (
                       <img src={project.image} alt={project.alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading={project.id === 1 ? "eager" : "lazy"} />
@@ -154,7 +178,7 @@ const Index = () => {
                         <Icon className="size-5" aria-hidden="true" />
                       </div>
                     </div>
-                    <p className="text-base leading-8 text-muted-foreground">{project.description}</p>
+                    <p className="min-h-32 text-base leading-8 text-muted-foreground">{project.description}</p>
                     {project.action ? (
                       <a href={project.action.href} download className="premium-button-secondary mt-6 inline-flex gap-2">
                         <Download className="size-4" aria-hidden="true" />
@@ -170,7 +194,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="skills" className="scroll-reveal bg-foreground px-5 py-24 text-background sm:px-8 lg:py-32">
+      <section id="skills" className="scroll-reveal bg-foreground px-5 py-24 text-background sm:px-8 lg:py-32" data-scroll-reveal>
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-background/55">What I practiced</p>
@@ -189,7 +213,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="story" className="scroll-reveal px-5 py-24 sm:px-8 lg:py-32">
+      <section id="story" className="scroll-reveal px-5 py-24 sm:px-8 lg:py-32" data-scroll-reveal>
         <div className="mx-auto max-w-5xl text-center">
           <p className="section-kicker">Portfolio story</p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-6xl">A showcase of projects that challenged my ideas.</h2>
