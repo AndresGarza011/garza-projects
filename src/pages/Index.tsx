@@ -16,6 +16,7 @@ const projects = [
     icon: Cpu,
     action: null,
     meta: "Hardware • Creativity • Build",
+    takeaway: "I learned how small design choices can make a technical build feel more original.",
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ const projects = [
     icon: Code2,
     action: { label: "Download Python file", href: "/andres.py" },
     meta: "Python • Turtle • Drawing",
+    takeaway: "This project helped me understand how logic, movement, and creativity work together in code.",
     code: ["import turtle", "def draw_A(t, x, y):", "    draw_line(t, x, y, BOX_WIDTH/2, BOX_HEIGHT)", "draw_word(t, message, -240, 0)"],
   },
   {
@@ -41,6 +43,7 @@ const projects = [
     icon: Gamepad2,
     action: { label: "Download game file", href: "/my_ufc_game.py" },
     meta: "Python • Pygame • Game Design",
+    takeaway: "I practiced turning an idea into an interactive experience with rules, visuals, and controls.",
     code: ["import pygame, sys, random", "WIDTH, HEIGHT = 1400, 740", "pygame.display.set_caption('Ultimate UFC + BJJ Showdown')", "while running: update_game()"],
   },
   {
@@ -52,6 +55,7 @@ const projects = [
     icon: Zap,
     action: null,
     meta: "Fusion • 3D Design • Servo Motion",
+    takeaway: "I saw how digital design can connect with real movement through mechanical parts.",
   },
 ];
 
@@ -127,6 +131,7 @@ const Index = () => {
             <a className="transition-colors hover:text-hero-foreground" href="#projects">Projects</a>
             <a className="transition-colors hover:text-hero-foreground" href="#skills">Skills</a>
             <a className="transition-colors hover:text-hero-foreground" href="#about">About</a>
+            <a className="transition-colors hover:text-hero-foreground" href="#reflection">Reflection</a>
           </div>
           <a href="#projects" className="rounded-full bg-hero-foreground px-4 py-2 text-sm font-semibold text-hero transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             View work
@@ -147,7 +152,7 @@ const Index = () => {
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <a href="#projects" className="premium-button bg-hero-foreground text-hero hover:-translate-y-0.5 hover:shadow-glow">Explore projects</a>
-              <a href="#about" className="premium-button border border-hero-foreground/20 bg-hero-foreground/8 text-hero-foreground backdrop-blur-xl hover:-translate-y-0.5 hover:bg-hero-foreground/12">About me</a>
+              <a href="#reflection" className="premium-button border border-hero-foreground/20 bg-hero-foreground/8 text-hero-foreground backdrop-blur-xl hover:-translate-y-0.5 hover:bg-hero-foreground/12">Final reflection</a>
             </div>
           </div>
 
@@ -222,6 +227,10 @@ const Index = () => {
                       </div>
                     </div>
                     <p className="min-h-32 text-base leading-8 text-muted-foreground">{project.description}</p>
+                    <div className="mt-6 rounded-2xl border border-border/70 bg-secondary/55 p-4">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Key takeaway</p>
+                      <p className="mt-2 text-sm leading-6 text-foreground/78">{project.takeaway}</p>
+                    </div>
                     {project.action ? (
                       <a href={project.action.href} download className="premium-button-secondary mt-6 inline-flex gap-2">
                         <Download className="size-4" aria-hidden="true" />
@@ -271,6 +280,20 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="reflection" className="scroll-reveal px-5 pb-24 sm:px-8 lg:pb-32" data-scroll-reveal>
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl border border-accent/30 bg-hero-cinematic p-7 text-hero-foreground shadow-glow sm:p-10 lg:p-14">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-hero-foreground/58">Final reflection</p>
+          <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <h2 className="font-display text-4xl font-semibold tracking-tight sm:text-6xl">
+              These projects show growth, focus, and creativity.
+            </h2>
+            <p className="text-lg leading-8 text-hero-foreground/72">
+              My biggest takeaway is that impressive work starts with effort and the right mindset. When I stay focused and commit to learning, I can create projects that combine technology, design, and personal creativity.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <footer className="border-t border-border px-5 py-10 sm:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-display text-2xl font-semibold tracking-tight">Garza Projects</p>
@@ -279,6 +302,7 @@ const Index = () => {
             <a className="hover:text-foreground" href="#projects">Projects</a>
             <a className="hover:text-foreground" href="#skills">Skills</a>
             <a className="hover:text-foreground" href="#about">About</a>
+            <a className="hover:text-foreground" href="#reflection">Reflection</a>
             <span>© 2026 Garza Projects</span>
           </div>
         </div>
