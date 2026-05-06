@@ -3,33 +3,34 @@ import { ArrowUpRight, Code2, Cpu, Download, Gamepad2, Image, Zap } from "lucide
 import raspberryPiPhoto from "@/assets/projects/raspberry-pi.jpg";
 import turtleAnimationPhoto from "@/assets/projects/turtle-animation.png";
 import ufcGamePhoto from "@/assets/projects/ufc-game.png";
+import servoMotorPhoto from "@/assets/projects/servo-motor.png";
 
 const projects = [
   {
     id: 1,
-    name: "Raspberry Pi",
+    name: "Raspberry Pi Case",
     eyebrow: "Section 1",
     description:
-      "For this project, I worked with a Raspberry Pi and added my own creative features to make the build feel more personal and interesting. I really enjoyed this project because it challenged me to think beyond basic instructions, use my creativity, and make design choices that helped the project stand out.",
+      "For this project, I worked with Fusion to create my Raspberry Pi case, focusing on getting the right dimensions and adding my own features through creativity to make it feel like a personal project. I really enjoyed this build because it challenged me to design beyond the basics and add custom touches to the case that helped it exceed expectations.",
     image: raspberryPiPhoto,
-    alt: "Raspberry Pi project photo",
+    alt: "Raspberry Pi case project photo",
     icon: Cpu,
-    action: null,
-    meta: "Hardware • Creativity • Build",
-    takeaway: "I learned how small design choices can make a technical build feel more original.",
+    action: { label: "Download 3D model (.stl)", href: "/raspberry_pi_andres_module.stl" },
+    meta: "Fusion • 3D Design • Hardware",
+    takeaway: "I learned how creativity can help your work stand out in a project.",
   },
   {
     id: 2,
     name: "Turtle Projects",
     eyebrow: "Section 2",
     description:
-      "For this project, I used Python turtle graphics to draw letters, words, and custom shapes through code. It was challenging because I had to think carefully about movement, angles, spacing, and functions, but I found it really cool to see the turtle create something visual from the instructions I programmed.",
+      "For this project, I used Python turtle graphics to draw letters, words, and custom shapes through code. It was fun but challenging at the same time because I had to learn how Python works and think carefully about space, coordinates, angles, and functions. In the end, it was really cool to see Python turtle create detailed visuals from the instructions I programmed.",
     image: turtleAnimationPhoto,
     alt: "Python turtle animation project screenshot",
     icon: Code2,
     action: { label: "Download Python file", href: "/andres.py" },
     meta: "Python • Turtle • Drawing",
-    takeaway: "This project helped me understand how logic, movement, and creativity work together in code.",
+    takeaway: "This project helped me understand how the Python language works and how to think about measurements and angles to create letters and shapes.",
     code: ["import turtle", "def draw_A(t, x, y):", "    draw_line(t, x, y, BOX_WIDTH/2, BOX_HEIGHT)", "draw_word(t, message, -240, 0)"],
   },
   {
@@ -37,13 +38,13 @@ const projects = [
     name: "Py Game",
     eyebrow: "Section 3",
     description:
-      "I really enjoyed creating this game because it pushed my creativity and problem-solving skills at the same time. I had to think about how the game should look, how it should feel to play, and how the code should control the action, which made the process challenging, fun, and rewarding.",
+      "I really enjoyed creating my own game about something I like, UFC. I thought it was a cool idea to make it a 2-player game or a 1-player game with an AI opponent to fight against. The hardest part was fixing bugs in the game, which pushed me to use technical skills and creativity to make it run better. In the end, it was challenging, fun, and rewarding.",
     image: ufcGamePhoto,
     alt: "Ultimate UFC and BJJ Showdown game screenshot",
     icon: Gamepad2,
     action: { label: "Download game file", href: "/my_ufc_game.py" },
     meta: "Python • Pygame • Game Design",
-    takeaway: "I practiced turning an idea into an interactive experience with rules, visuals, and controls.",
+    takeaway: "I challenged myself with technical skills and creativity to make a game I truly enjoyed playing.",
     code: ["import pygame, sys, random", "WIDTH, HEIGHT = 1400, 740", "pygame.display.set_caption('Ultimate UFC + BJJ Showdown')", "while running: update_game()"],
   },
   {
@@ -51,11 +52,13 @@ const projects = [
     name: "Servo Motor",
     eyebrow: "Section 4",
     description:
-      "For this project, I made my own 3D design and connected it with a servo motor to create a working motion-based function. I enjoyed it because it challenged both my technical skills and creativity, and it also helped me practice using Fusion to design something that could connect to a real mechanical part.",
+      "For this project, I made my own 3D design and used creativity, critical thinking, and technical skills to connect it with a servo motor to create a safe lockbox. Even though using Fusion was hard at first, I learned to work with it more confidently to design something that could connect to a real motor.",
+    image: servoMotorPhoto,
+    alt: "Servo motor lockbox 3D design in Fusion",
     icon: Zap,
-    action: null,
+    action: { label: "Download 3D model (.stl)", href: "/project_servo_motor_Andres.stl" },
     meta: "Fusion • 3D Design • Servo Motion",
-    takeaway: "I saw how digital design can connect with real movement through mechanical parts.",
+    takeaway: "I learned how to use critical thinking to turn a 3D design into a real function with movement through a motor.",
   },
 ];
 
@@ -274,7 +277,7 @@ const Index = () => {
           </div>
           <div className="glass-panel rounded-3xl p-7 sm:p-10">
             <p className="text-xl leading-9 text-foreground/82 sm:text-2xl sm:leading-10">
-              Through these projects, I learned that creativity and determination can help us build impressive things. Whether I was coding, designing, or working with hardware, each project showed me that we are capable of accomplishing meaningful goals when we commit to them, stay focused, and approach challenges with the right mindset.
+              Through these projects, I learned how to use creativity, technical skills, problem solving, and critical thinking to make each build something I'm proud of. Whether I was coding, designing, or working with hardware, every project taught me that we are capable of reaching meaningful goals when we truly lock in and approach them with the right mindset.
             </p>
           </div>
         </div>
@@ -288,7 +291,7 @@ const Index = () => {
               These projects show growth, focus, and creativity.
             </h2>
             <p className="text-lg leading-8 text-hero-foreground/72">
-              My biggest takeaway is that impressive work starts with effort and the right mindset. When I stay focused and commit to learning, I can create projects that combine technology, design, and personal creativity.
+              My biggest takeaway is that amazing work starts with making mistakes and fixing them with the best effort I can give, while committing to learning from each one. Through that process, I can create projects that combine creativity, technology, design, and coding.
             </p>
           </div>
         </div>
